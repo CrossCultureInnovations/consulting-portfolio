@@ -1,0 +1,11 @@
+@import 'bootstrap';
+
+@font-face {
+  font-family: 'myFont';
+  src: url("fonts/Roboto-Regular.ttf") format("truetype");
+}
+
+$font-main: 'myFont', sans-serif;
+body {
+  font-family: $font-main;
+}
