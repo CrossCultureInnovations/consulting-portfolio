@@ -35,10 +35,8 @@ const Portfolio = () =>
         using these technologies and we are confident that we can help.
       </p>
     </Container>
-
     <Container>
       <Subtitle id="cloud">Cloud</Subtitle>
-
     </Container>
   </Container>;
 
