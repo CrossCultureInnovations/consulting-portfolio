@@ -4,7 +4,7 @@ services:
     alias: docker
 
 variables:
-  DO_TOKEN: $HEROKU_TOKEN
+  DO_TOKEN: $DO_TOKEN
   APP_NAME: "portfolio"
   DOCKER_TLS_CERTDIR: ""
   DO_REGISTRY: "amir734jj"
