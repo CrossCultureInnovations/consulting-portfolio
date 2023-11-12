@@ -11,6 +11,8 @@ variables:
   DOCKER_HOST: "tcp://docker:2375"
   HEROKU_REGISTRY: "registry.heroku.com"
   HEROKU_EMAIL: "hesamian@uwm.edu"
+  USERNAME: "root"
+  IP_ADDRESS: "142.93.2.22"
 
 stages:
   - deploy
@@ -32,3 +34,10 @@ docker-build:
     - doctl registry login
     - docker build -t registry.digitalocean.com/$DO_REGISTRY/$APP_NAME .
     - docker push registry.digitalocean.com/$DO_REGISTRY/$APP_NAME
+    - |
+      $PASSWORD | ssh $USERNAME@$IP_ADDRESS << 'EOF'
+      cd ~/home
+      docker stop $(docker ps -a -q)
+      docker pull registry.digitalocean.com/$$DO_REGISTRY/$APP_NAME
+      docker run -d -p 80:3000 registry.digitalocean.com/$$DO_REGISTRY/$APP_NAME
+      EOF
