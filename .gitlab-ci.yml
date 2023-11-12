@@ -35,7 +35,7 @@ docker-build:
     - docker build -t registry.digitalocean.com/$DO_REGISTRY/$APP_NAME .
     - docker push registry.digitalocean.com/$DO_REGISTRY/$APP_NAME
     - |
-      $PASSWORD | ssh $USERNAME@$IP_ADDRESS << 'EOF'
+      $PASSWORD | ssh -tt $USERNAME@$IP_ADDRESS << 'EOF'
       cd ~/home
       docker stop $(docker ps -a -q)
       docker pull registry.digitalocean.com/$$DO_REGISTRY/$APP_NAME
