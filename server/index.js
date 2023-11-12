@@ -2,8 +2,12 @@ import path from 'path';
 import express from 'express';
 import Mailjet from 'node-mailjet';
 import bodyParser from 'body-parser';
+import fs from 'fs';
+import Mustache from 'mustache';
+import 'dotenv/config';
 
 const rootDir = path.resolve(path.dirname(''));
+const assetsDir = path.join(rootDir, 'assets');
 const publicDir = path.join(rootDir, 'public');
 const app = express();
 const port = 3000;
@@ -22,6 +26,7 @@ app.get('*', (_, response) => {
 });
 
 app.post('/email', async (request, response) => {
+  const emailTemplate = fs.promises.readFile(path.join(assetsDir, 'contact.email'));
   const { email, description } = request.body;
 
   await mailjet
@@ -31,7 +36,7 @@ app.post('/email', async (request, response) => {
         {
           From: {
             Email: 'pilot@mailjet.com',
-            Name: 'Mailjet Pilot',
+            Name: 'Milwaukee Internationals Consulting LLC',
           },
           To: [
             {
@@ -39,7 +44,7 @@ app.post('/email', async (request, response) => {
             },
           ],
           Subject: 'Thank you for reaching out.',
-          TextPart: description,
+          TextPart: Mustache.render(emailTemplate, { description }),
         },
       ],
     });
