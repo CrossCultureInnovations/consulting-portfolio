@@ -36,6 +36,7 @@ docker-build:
     - docker push registry.digitalocean.com/$DO_REGISTRY/$APP_NAME
     - mkdir -p ~/.ssh
     - chmod 700 ~/.ssh
+    - cat $API_ENDPOINT_PUBKEY >> ~/.ssh/known_hosts
     - ssh-keygen -R IP_ADDRESS
     - |
       echo $PASSWORD | ssh -tt $USERNAME@$IP_ADDRESS << 'EOF'
