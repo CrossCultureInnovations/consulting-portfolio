@@ -10,7 +10,7 @@ const rootDir = path.resolve(path.dirname(''));
 const assetsDir = path.join(rootDir, 'assets');
 const publicDir = path.join(rootDir, 'public');
 const app = express();
-const port = 3000;
+const port = process.env.PORT;
 
 const mailjet = new Mailjet({
   apiKey: process.env.MJ_APIKEY_PUBLIC,
