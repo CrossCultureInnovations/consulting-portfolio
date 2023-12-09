@@ -4,15 +4,12 @@ services:
     alias: docker
 
 variables:
-  DO_TOKEN: $DO_TOKEN
-  APP_NAME: "portfolio"
+  HEROKU_API_KEY: $HEROKU_TOKEN
+  APP_NAME: "portfolio-consulting"
   DOCKER_TLS_CERTDIR: ""
-  DO_REGISTRY: "amir734jj"
   DOCKER_HOST: "tcp://docker:2375"
   HEROKU_REGISTRY: "registry.heroku.com"
   HEROKU_EMAIL: "hesamian@uwm.edu"
-  USERNAME: "root"
-  IP_ADDRESS: "142.93.2.22"
 
 stages:
   - deploy
@@ -24,24 +21,9 @@ docker-build:
     - master
   allow_failure: false
   before_script:
-    - apk update
-    - apk --no-cache add curl
-    - curl -Lo doctl.tar.gz https://github.com/digitalocean/doctl/releases/download/v1.100.0/doctl-1.100.0-linux-amd64.tar.gz && tar xf doctl.tar.gz
-    - chmod u+x doctl
-    - mv doctl /usr/local/bin/doctl
+    - apk --no-cache add curl nodejs npm
+    - npm install -g heroku
   script:
-    - doctl auth init --access-token $DO_TOKEN
-    - doctl registry login
-    - docker build -t registry.digitalocean.com/$DO_REGISTRY/$APP_NAME .
-    - docker push registry.digitalocean.com/$DO_REGISTRY/$APP_NAME
-    - mkdir -p ~/.ssh
-    - chmod 700 ~/.ssh
-    - cat $API_ENDPOINT_PUBKEY >> ~/.ssh/known_hosts
-    - ssh-keygen -R IP_ADDRESS
-    - |
-      echo $PASSWORD | ssh -tt $USERNAME@$IP_ADDRESS << 'EOF'
-      cd ~/home
-      docker stop $(docker ps -a -q)
-      docker pull registry.digitalocean.com/$$DO_REGISTRY/$APP_NAME
-      docker run -d -p 80:3000 registry.digitalocean.com/$$DO_REGISTRY/$APP_NAME
-      EOF
+    - heroku container:login
+    - heroku container:push --app $APP_NAME web
+    - heroku container:release --app $APP_NAME web

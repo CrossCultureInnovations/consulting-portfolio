@@ -15,7 +15,8 @@ const Team = () =>
           <Card.Body>
             <Card.Title>Asher Imtiaz</Card.Title>
             <Card.Text>
-              Asher Imtiaz is a seasoned professional with a background in R&D Healthcare Software, spending 7 years at IBM, where he specialized in computer science and software development.
+              Asher Imtiaz is a seasoned professional with a background in R&D Healthcare Software, 
+              spending 7 years at IBM, where he specialized in computer science and software development.
             </Card.Text>
             <Button variant="primary" href="https://www.linkedin.com/in/asherimtiaz/">
               <FontAwesomeIcon icon={faLinkedin} />
@@ -29,7 +30,8 @@ const Team = () =>
           <Card.Body>
             <Card.Title>Amir Hesamian</Card.Title>
             <Card.Text>
-              Amir is a senior software engineer at Microsoft Azure with a PhD in Computer Science focusing on compilers, bringing 8 years of experience in software development.
+              Amir is a senior software engineer at Microsoft Azure and has a PhD in Computer Science focusing on compilers, 
+              bringing 8 years of experience in software development.
             </Card.Text>
             <Button variant="primary" className="me-2" href="https://www.linkedin.com/in/hesamian">
               <FontAwesomeIcon icon={faLinkedin} />
