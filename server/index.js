@@ -1,21 +1,16 @@
 import path from 'path';
 import express from 'express';
-import Mailjet from 'node-mailjet';
 import bodyParser from 'body-parser';
-import fs from 'fs';
-import Mustache from 'mustache';
-import 'dotenv/config';
+import { EmailClient } from '@azure/communication-email';
 
 const rootDir = path.resolve(path.dirname(''));
-const assetsDir = path.join(rootDir, 'assets');
 const publicDir = path.join(rootDir, 'public');
 const app = express();
 const port = process.env.PORT;
 
-const mailjet = new Mailjet({
-  apiKey: process.env.MJ_APIKEY_PUBLIC,
-  apiSecret: process.env.MJ_APIKEY_PRIVATE,
-});
+const connectionString = process.env.COMMUNICATION_SERVICES_CONNECTION_STRING;
+const emailFrom = process.env.EMAIL_SENDER;
+const emailClient = new EmailClient(connectionString);
 
 // parse application/json
 app.use(bodyParser.json());
@@ -26,28 +21,27 @@ app.get('*', (_, response) => {
 });
 
 app.post('/email', async (request, response) => {
-  const emailTemplate = fs.promises.readFile(path.join(assetsDir, 'contact.email'));
   const { email, description } = request.body;
 
-  await mailjet
-    .post('send', { version: 'v3.1' })
-    .request({
-      Messages: [
-        {
-          From: {
-            Email: 'pilot@mailjet.com',
-            Name: 'Milwaukee Internationals Consulting LLC',
-          },
-          To: [
-            {
-              Email: email,
-            },
-          ],
-          Subject: 'Thank you for reaching out.',
-          TextPart: Mustache.render(emailTemplate, { description }),
-        },
-      ],
-    });
+  const emailMessage = {
+    senderAddress: emailFrom,
+    content: {
+      subject: 'Thank you for reaching out.',
+      plainText: `
+We will get in touch.
+Asher/Amir
+
+---
+${description}
+      `,
+    },
+    recipients: {
+      to: [{ address: email }],
+    },
+  };
+
+  const poller = await emailClient.beginSend(emailMessage);
+  await poller.pollUntilDone();
 
   response.sendStatus(200);
 });

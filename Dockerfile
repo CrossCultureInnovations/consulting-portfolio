@@ -21,10 +21,8 @@ WORKDIR /app/run
 
 # copy necessary things only
 COPY --from=build "/app/build/server/public" public
-COPY --from=build "/app/build/server/assets" assets
 COPY --from=build "/app/build/server/dist" dist
 COPY --from=build "/app/build/server/package.json" .
-COPY --from=build "/app/build/server/.env" .
 
 # install production dependencies only
 RUN npm install --omit=dev
