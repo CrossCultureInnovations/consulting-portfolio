@@ -1,13 +1,14 @@
 import Form from 'react-bootstrap/Form';
-import { Button, Col, Container, Row } from "react-bootstrap";
+import {Alert, Button, Col, Container, Row} from "react-bootstrap";
 import { Subtitle } from "../utilities/index.jsx";
 import axios from "axios";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import {useState} from "react";
 
 const sendEmail = async ({ email, description }) => {
-  await axios.post('/email', { email, description });
+  await axios.post('/api/email', { email, description });
 };
 
 const schema = yup
@@ -18,7 +19,8 @@ const schema = yup
   .required();
 
 const Contact = () => {
-  const { register, handleSubmit, formState: { errors } } = useForm({ resolver: yupResolver(schema) });
+  const [submitted, setSubmitted] = useState(false);
+  const { reset, register, handleSubmit, formState: { errors } } = useForm({ resolver: yupResolver(schema) });
 
   return (
     <Container className="my-5">
@@ -27,8 +29,18 @@ const Contact = () => {
         We are here to help. Feel free to reach out via phone or email, and we can discuss the next steps.
       </p>
       <Row>
+        <Col sm={12} md={{ span: 10, offset: 1,  }}>
+          { submitted ? <Alert variant={"success"}>
+          Thank you so much for reaching out, we will stay in touch.
+          </Alert> : null}
+        </Col>
+
         <Col sm={12} md={{ span: 8, offset: 2 }}>
-          <Form onSubmit={handleSubmit(sendEmail)}>
+          <Form onSubmit={async result => {
+            await handleSubmit(sendEmail)(result);
+            reset();
+            setSubmitted(true);
+          }}>
             <Form.Group className="mb-3" controlId="email">
               <Form.Label>Email address</Form.Label>
               <Form.Control

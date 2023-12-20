@@ -27,4 +27,6 @@ COPY --from=build "/app/build/server/package.json" .
 # install production dependencies only
 RUN npm install --omit=dev
 
+ENV NODE_ENV=production
+
 ENTRYPOINT ["npm", "run", "serve" ]
