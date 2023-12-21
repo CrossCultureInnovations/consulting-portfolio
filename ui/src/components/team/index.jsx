@@ -9,7 +9,7 @@ const Team = () =>
   <Container className="my-5">
     <Subtitle>Meet the Team</Subtitle>
     <Row>
-      <Col md={6} className="d-flex justify-content-center mb-2">
+      <Col md={6} className="d-flex justify-content-center mb-2 mt-4">
         <Card style={{ width: '18rem' }}>
           <Card.Img variant="top" src={asher} />
           <Card.Body>

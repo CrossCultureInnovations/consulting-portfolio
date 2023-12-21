@@ -6,7 +6,7 @@ const Solution = () =>
     <Row className="row align-items-md-stretch">
       <Col md={6} className="mb-2">
         <div className="h-100 p-5 text-white bg-dark rounded-3">
-          <h2>Custom Website and Software Solutions</h2>
+          <h2>Custom Web Solutions</h2>
           <p>
           Elevate your business with tailored, cutting-edge website and software solutions powered by Azure Cloud,
           ensuring seamless integration and top-tier performance.
