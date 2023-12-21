@@ -7,10 +7,6 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import {useState} from "react";
 
-const sendEmail = async ({ email, description }) => {
-  await axios.post('/api/email', { email, description });
-};
-
 const schema = yup
   .object({
     email: yup.string().email().required(),
@@ -36,11 +32,12 @@ const Contact = () => {
         </Col>
 
         <Col sm={12} md={{ span: 8, offset: 2 }}>
-          <Form onSubmit={async result => {
-            await handleSubmit(sendEmail)(result);
+          <Form onSubmit={handleSubmit(async ({ email, description }) => {
+            console.log({email, description});
+            await axios.post('/api/email', { email, description });
             reset();
             setSubmitted(true);
-          }}>
+          })}>
             <Form.Group className="mb-3" controlId="email">
               <Form.Label>Email address</Form.Label>
               <Form.Control

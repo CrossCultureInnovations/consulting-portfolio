@@ -22,6 +22,9 @@
     "@azure/communication-email": "^1.0.0",
     "@babel/runtime": "^7.23.2",
     "body-parser": "^1.20.2",
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "morgan": "^1.10.0",
+    "morgan-json": "^1.1.0",
+    "winston": "^3.11.0"
   }
 }
