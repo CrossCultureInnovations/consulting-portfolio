@@ -44,7 +44,7 @@ app.get('*', (_, response) => {
 
 app.post('/api/email', async (request, response) => {
   const { email, description } = request.body;
-  if (process.NODE_ENV === 'production') {
+  if (process.env.NODE_ENV === 'production') {
     const connectionString = process.env.COMMUNICATION_SERVICES_CONNECTION_STRING;
     const emailFrom = process.env.EMAIL_SENDER;
     const emailClient = new EmailClient(connectionString);
@@ -65,7 +65,7 @@ app.post('/api/email', async (request, response) => {
     await poller.pollUntilDone();
     logger.log('Successfully send an email to email=%s', email);
   } else {
-    logger.info('Skip sending email to email=%s NODE_ENV=%s', email, process.NODE_ENV);
+    logger.info('Skip sending email to email=%s NODE_ENV=%s', email, process.env.NODE_ENV);
   }
 
   response.sendStatus(200);
