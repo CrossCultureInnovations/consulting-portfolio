@@ -63,7 +63,7 @@ app.post('/api/email', async (request, response) => {
 
     const poller = await emailClient.beginSend(emailMessage);
     await poller.pollUntilDone();
-    logger.log('Successfully send an email to email=%s', email);
+    logger.info('Successfully send an email to email=%s', email);
   } else {
     logger.info('Skip sending email to email=%s NODE_ENV=%s', email, process.env.NODE_ENV);
   }
