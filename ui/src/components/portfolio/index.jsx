@@ -48,7 +48,7 @@ const Portfolio = () =>
     <Container>
       <Subtitle id="cloud">Cloud</Subtitle>
       <Container className="ms-5">
-        We are brining first-hand experince in cloud computing, specially Microsoft Azure and services including:
+        We are brining first-hand experience in cloud computing, specially Microsoft Azure and services including:
         <ul>
           <li>Azure Functions (serverless)</li>
           <li>Azure WebApps (including Docker deployment)</li>
@@ -59,7 +59,7 @@ const Portfolio = () =>
           <li>Azure Devops (CI/CD)</li>
         </ul>
 
-        We are also experinced with PaaS services such as <a href="https://www.heroku.com/" target="_blank" rel="noreferrer">Heroku</a> and <a href="https://www.digitalocean.com/" target="_blank" rel="noreferrer">Digital-Occean</a> and IaaS such as <a href="https://www.linode.com/products/"  target="_blank" rel="noreferrer">linode</a>.
+        We are also experienced with PaaS services such as <a href="https://www.heroku.com/" target="_blank" rel="noreferrer">Heroku</a> and <a href="https://www.digitalocean.com/" target="_blank" rel="noreferrer">Digital-Occean</a> and IaaS such as <a href="https://www.linode.com/products/"  target="_blank" rel="noreferrer">linode</a>.
       </Container>
     </Container>
   </Container >;
