@@ -5,7 +5,7 @@ const Jumbotron = () =>
   <Container className="p-5 mb-4 bg-light rounded-3">
     <Container fluid="md" className="py-5">
       <Row>
-        <Col md={8}>
+        <Col sm={12} md={8}>
           <h1 className="display-5 fw-bold">
             Local Software Consulting Team
           </h1>
@@ -15,7 +15,7 @@ const Jumbotron = () =>
             today for a consultation!
           </p>
         </Col>
-        <Col md={4} className="d-sm-none d-md-block">
+        <Col md={4} className="d-sm-none d-md-block d-none d-sm-block">
           <CloudSvg style={{height: '10rem', width: "10rem", float: "right"}} />
         </Col>
       </Row>
