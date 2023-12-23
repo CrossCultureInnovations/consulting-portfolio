@@ -1,8 +1,16 @@
-FROM node:lts-alpine as build
+FROM 343dev/optimizt as optimizt
 
 WORKDIR /app/build
 
 COPY . .
+
+RUN find . -type f \( -name '*.PNG' -o -name '*.JPG' \) -exec optimizt {} +
+
+FROM node:lts-alpine as build
+
+WORKDIR /app/build
+
+COPY --from=optimizt /app/build .
 
 # build back-end
 RUN cd server && \
