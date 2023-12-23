@@ -4,7 +4,7 @@ WORKDIR /app/build
 
 COPY . .
 
-RUN find . -type f \( -name '*.PNG' -o -name '*.JPG' \) -exec optimizt {} +
+RUN find . -type f \( -iname '*.PNG' -o -iname '*.JPG' \) -exec optimizt {} +
 
 FROM node:lts-alpine as build
 
