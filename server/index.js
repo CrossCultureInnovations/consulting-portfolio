@@ -57,7 +57,7 @@ app.post('/api/email', async (request, response) => {
       },
       recipients: {
         to: [{ address: email }],
-        cc: [{ address: 'hesamian@uwm.edu' }],
+        cc: [{ address: 'connect@crosscultureinnovations.com' }],
       },
     };
 
