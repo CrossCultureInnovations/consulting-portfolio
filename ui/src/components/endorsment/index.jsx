@@ -11,7 +11,7 @@ const HorizontalRule = () =>
 const testimonies = [
   {
     name: "MilwaukeeInternationals Team",
-    description: `**Annual Tour of Milwaukee** is an annual event that provides a tour of the city of Milwaukee and a dinner with a host family to newly arrived international students, all for free. It is organized by a large group of volunteers, and for years we managed the event on paper. As the number of students and volunteers grew, we desperately needed a website to manage all the logistics. Asher and Amir came to our aid and provided a solution that has been working well for almost eight years. They also support the system and provide training and improvements every year. Thank you for all your help.`
+    description: `**Annual Tour of Milwaukee** is an annual event that provides a tour of the city of Milwaukee and a dinner with a host family to newly arrived international students of UW-Milwaukee, Marquette and other local universities, all for free. It is organized by a large group of volunteers, and for years we managed the event on paper. As the number of students and volunteers grew, we desperately needed a website to manage all the logistics. Asher and Amir came to our aid and provided a solution that has been working well for almost eight years. They also support the system, provide training and system improvements every year. Thank you for all your help.`
   }
 ];
 
