@@ -76,7 +76,7 @@ const Portfolio = () =>
         <Cloud />
         <Software />
       </Col>
-      <Col md={4} className="d-sm-none d-md-block">
+      <Col md={4} className="d-none d-lg-block d-xl-block">
         <Wordcloud width={400} height={300} showControls={false}/>
       </Col>
     </Row>

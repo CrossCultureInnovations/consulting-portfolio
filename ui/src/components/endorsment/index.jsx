@@ -10,11 +10,8 @@ const HorizontalRule = () =>
 
 const testimonies = [
   {
-    name: "Amir",
-    description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-          et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-          cillum dolore eu fugiat nulla pariatur.`
+    name: "MilwaukeeInternationals Team",
+    description: `**Annual Tour of Milwaukee** is an annual event that provides a tour of the city of Milwaukee and a dinner with a host family to newly arrived international students, all for free. It is organized by a large group of volunteers, and for years we managed the event on paper. As the number of students and volunteers grew, we desperately needed a website to manage all the logistics. Asher and Amir came to our aid and provided a solution that has been working well for almost eight years. They also support the system and provide training and improvements every year. Thank you for all your help.`
   }
 ];
 

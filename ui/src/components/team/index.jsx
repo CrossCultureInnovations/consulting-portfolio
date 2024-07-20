@@ -20,7 +20,7 @@ const Team = () =>
                 <Card.Title>Asher Imtiaz</Card.Title>
                 <Card.Text>
                   Asher Imtiaz is a seasoned professional with a background in R&D Healthcare Software,
-                  spending 7 years at IBM, where he specialized in computer science and software development.
+                  spending 7 years at IBM, where he specialized in intersection of computer science and healthcare.
                 </Card.Text>
                 <Button variant="primary" href="https://www.linkedin.com/in/asherimtiaz/">
                   <FontAwesomeIcon icon={faLinkedin} />
