@@ -64,7 +64,7 @@ app.post('/api/email', async (request, response) => {
           ],
           "Cc": [
             {
-              "Email": 'info@crosscultureinnovations.com',
+              "Email": 'asherimtiaz@gmail.com',
               "Name": "info"
             }
           ],
