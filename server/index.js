@@ -1,10 +1,10 @@
 import path from 'path';
 import express from 'express';
 import bodyParser from 'body-parser';
-import { EmailClient } from '@azure/communication-email';
 import morgan from 'morgan';
 import winston from 'winston';
 import json from 'morgan-json';
+import axios from 'axios';
 
 const rootDir = path.resolve(path.dirname(''));
 const publicDir = path.join(rootDir, 'public');
@@ -45,25 +45,45 @@ app.get('*', (_, response) => {
 app.post('/api/email', async (request, response) => {
   const { email, description } = request.body;
   if (process.env.NODE_ENV === 'production') {
-    const connectionString = process.env.COMMUNICATION_SERVICES_CONNECTION_STRING;
-    const emailFrom = process.env.EMAIL_SENDER;
-    const emailClient = new EmailClient(connectionString);
+    const apiKey = process.env.MAILJET_API_KEY;
+    const apiSecret = process.env.MAILJET_API_SECRET;
+    const emailFrom = process.env.MAILJET_SENDER;
 
     const emailMessage = {
-      senderAddress: emailFrom,
-      content: {
-        subject: 'Thank you for reaching out.',
-        plainText: emailBody(description),
-      },
-      recipients: {
-        to: [{ address: email }],
-        cc: [{ address: 'connect@crosscultureinnovations.com' }],
-      },
+      "Messages": [
+        {
+          "From": {
+            "Email": emailFrom,
+            "Name": "Crossculture Innovations"
+          },
+          "To": [
+            {
+              "Email": email,
+              "Name": "customer"
+            },
+            {
+              "Email": 'connect@crosscultureinnovations.com',
+              "Name": "connect"
+            }
+          ],
+          "Subject": "Thank you for reaching out.",
+          "TextPart": emailBody(description)
+        }
+      ]
     };
 
-    const poller = await emailClient.beginSend(emailMessage);
-    await poller.pollUntilDone();
-    logger.info('Successfully send an email to email=%s', email);
+    try {
+      await axios.post("https://api.mailjet.com/v3.1/send", emailMessage, {
+        auth: {
+          username: apiKey,
+          password: apiSecret
+        }
+      });
+      logger.info('Successfully send an email to email=%s', email);
+    } catch (error) {
+      logger.info('Failed sending an email=%s', JSON.stringify(emailMessage));
+    }
+
   } else {
     logger.info('Skip sending email to email=%s NODE_ENV=%s', email, process.env.NODE_ENV);
   }
