@@ -7,7 +7,7 @@ const Jumbotron = () =>
       <Row>
         <Col sm={12} md={8}>
           <h1 className="display-5 fw-bold">
-            Cross Cultural Invocation Consulting
+            Cross Cultural Innovation Consulting
           </h1>
           <p className="col-md-8 fs-4">
             Your local software solution experts, providing innovative services to propel your business forward. Contact

@@ -22,11 +22,12 @@ const logger = winston.createLogger({
   ],
 });
 
-const emailBody = (description) => `
+const emailBody = (email, description) => `
 We will get in touch.
 Asher/Amir
 ---
 
+${email}
 ${description}`;
 
 // parse application/json
@@ -62,14 +63,18 @@ app.post('/api/email', async (request, response) => {
               "Name": "customer"
             }
           ],
-          "Cc": [
+          "Bcc": [
             {
               "Email": 'asherimtiaz@gmail.com',
-              "Name": "info"
+              "Name": "Asher"
+            },
+            {
+              "Email": 'amirhesamyan@gmail.com',
+              "Name": "Amir"
             }
           ],
           "Subject": "Thank you for reaching out.",
-          "TextPart": emailBody(description)
+          "TextPart": emailBody(email, description)
         }
       ]
     };
