@@ -6,7 +6,7 @@ import Wordcloud from "../wordcloud";
 const Technical = () => <Container>
   <Subtitle>Technical Skills</Subtitle>
   <p>
-    Our team has a combined experience of 15 years in software industry working on range of technologies including:
+    Our team has a combined experience of more than 15 years in the software industry, working on a range of technologies including:
   </p>
   <ul>
     <li>
@@ -35,7 +35,7 @@ const Technical = () => <Container>
 const Cloud = () => <Container>
   <Subtitle id="cloud">Cloud</Subtitle>
   <Container className="mb-3">
-      We are brining first-hand experience in cloud computing, specially Microsoft Azure and services including:
+      We are bringing first-hand experience in cloud computing, specially Microsoft Azure and services including:
     <ul>
       <li>Azure Functions (serverless)</li>
       <li>Azure WebApps (including Docker deployment)</li>
@@ -46,7 +46,7 @@ const Cloud = () => <Container>
       <li>Azure Devops (CI/CD)</li>
     </ul>
 
-      We are also have experience with PaaS services such as <a href="https://www.heroku.com/" target="_blank" rel="noreferrer">Heroku</a> and <a href="https://www.digitalocean.com/" target="_blank" rel="noreferrer">Digital-Ocean</a> and IaaS such as <a href="https://www.linode.com/products/"  target="_blank" rel="noreferrer">linode</a>.
+      We have experience with PaaS services such as <a href="https://www.heroku.com/" target="_blank" rel="noreferrer">Heroku</a> and <a href="https://www.digitalocean.com/" target="_blank" rel="noreferrer">Digital-Ocean</a> and IaaS such as <a href="https://www.linode.com/products/"  target="_blank" rel="noreferrer">linode</a>.
   </Container>
 </Container>;
 
@@ -54,8 +54,8 @@ const Software = () => <Container>
   <Subtitle id="software">Software</Subtitle>
   <Container>
     <p>
-        We have expertise in C#, .NET, JavaScript, React and Angular. We have delivered websites and software's
-        using these technologies and we are confident that we can help.
+        We have expertise in C#, .NET, JavaScript, React and Angular. We have delivered Web and other software
+        solutions using these technologies.
     </p>
     <ul>
       <li>
