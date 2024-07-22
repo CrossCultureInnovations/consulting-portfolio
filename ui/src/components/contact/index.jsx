@@ -20,14 +20,14 @@ const Contact = () => {
 
   return (
     <Container className="my-5">
-      <Subtitle>Contact Us</Subtitle>
+      <Subtitle>Get in Touch!</Subtitle>
       <p className="ps-3 mb-5">
-        We are here to help. Feel free to reach out via phone or email, and we can discuss the next steps.
+        We're here to help. Send us an email, and let's chat about your next steps.
       </p>
       <Row>
         <Col sm={12} md={{ span: 10, offset: 1,  }}>
           { submitted ? <Alert variant={"success"}>
-          Thank you so much for reaching out, we will stay in touch.
+          Thank you so much for reaching out! We'll be in touch soon.
           </Alert> : null}
         </Col>
 
