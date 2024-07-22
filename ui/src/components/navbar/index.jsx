@@ -9,7 +9,7 @@ const BasicNavbar = () => (
     <Container>
       <Navbar.Brand href="/">
         <FontAwesomeIcon icon={faCode} />{' '}
-       CrossCultural LLC
+       CrossCulture Innovations
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav"/>
       <Navbar.Collapse id="basic-navbar-nav">
